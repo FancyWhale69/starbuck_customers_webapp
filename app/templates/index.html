@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML Deployment</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+<body>
+ <div class="login">
+	<h1>Customer Responce to Promotion</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="pretest_score" placeholder="age" required="required" />
+    	<input type="text" name="school_area_suburban" placeholder="income" required="required" />
+      <input type="text" name="school_area_urban" placeholder="offer: bogo_[10,5]_[7,5], discount_[20,10,7]_[10,7], informational_0_[4, 3]'" required="required" />
+		  <input type="text" name="school_type_Public" placeholder="total_tra" required="required" />
+		  <input type="text" name="teaching_method_Standard" placeholder="gender: F, M, O" required="required" />
+      <input type="text" name="qualifies_for_free/reduced_lunch" placeholder="year: 2013 -> 2018" required="required" />
+		
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+ </div>
+</body>
+</html>
